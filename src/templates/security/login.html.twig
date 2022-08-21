@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <h1>{{ 'login.login'|trans }}</h1>
+
+    <div class="container w-25">
+        <form action="{{ path('app_login') }}" method="post">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="mb-3">
+                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            {% endif %}
+
+            <label style="margin-top: 16px" for="inputEmail">{{ 'login.email'|trans }}</label>
+            <input style="margin-top: 8px" type="email" value="{{ last_username }}" name="_username" id="inputEmail"
+                   class="form-control" autocomplete="email" required autofocus>
+            <label style="margin-top: 16px" for="inputPassword">{{ 'login.password'|trans }}</label>
+            <input style="margin-top: 8px" type="password" name="_password" id="inputPassword" class="form-control"
+                   autocomplete="current-password" required>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            {#
+            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+            See https://symfony.com/doc/current/security/remember_me.html
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Remember me
+                </label>
+            </div>
+            #}
+
+            <button style="margin-top: 16px" class="btn btn-lg btn-primary" type="submit">
+                {{ 'login.sign_in'|trans }}
+            </button>
+        </form>
+
+        <a style="padding-top: 16px ; display: inline-block"
+           href="{{ path('app_register') }}">{{ 'login.not_registered_yet?'|trans }} </a>
+
+    </div>
+
+{% endblock %}

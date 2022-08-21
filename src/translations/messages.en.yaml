@@ -1,0 +1,29 @@
+login:
+  email: Email
+  password: Password
+  login: Login
+  sign_in: Sign in
+  not_registered_yet?: Not registered yet?
+register:
+  registration: Registration
+  register: Register
+new_game:
+  welcome: welcome username !
+  welcome_desc: Hope you can find Spy!
+  create_new_room: Create new room
+  join_a_room: Join a room
+  desc: Only admin and host user can create new room
+  fa: FA
+  en: EN
+room_new:
+  room_invitation_code: 'Room invitation code: inv_code'
+  start: Start
+  remove: Remove room
+members_list:
+  title: Members
+rooms_list:
+  room_name: Room name
+  capacity/members: Capacity/Members
+  join: Join
+room:
+  end_the_game: End the game

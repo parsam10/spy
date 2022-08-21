@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {#    {% if is_granted('IS_AUTHENTICATED_FULLY') %} #}
+
+    {#    {% endif %} #}
+
+    {% block stylesheets %}
+        {{ parent() }}
+        {{ encore_entry_link_tags('new_game') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ parent() }}
+        {{ encore_entry_script_tags('new_game') }}
+    {% endblock %}
+
+{% endblock %}
+
+{% block body %}
+    <body>
+    {{ parent() }}
+
+    <h1>{{ 'new_game.welcome'|trans({"username" : app.user.email}) }}</h1>
+    <h5>{{ 'new_game.welcome_desc' | trans }}</h5>
+
+    <div style="align-items: center ; margin-top: 100px" class="btn-group-vertical">
+        <a class="button btn btn-primary" {% if user_role != 'ROLE_ADMIN' and user_role != 'ROLE_HOST' %} disabled="disabled" {% endif %}
+           href="{{ path('app_room_new',{'id': -1}) }}"
+        >
+            {{ 'new_game.create_new_room'|trans }}
+        </a>
+        {% if user_role != 'ROLE_ADMIN' or user_role != 'ROLE_HOST' %}
+            {{ 'new_game.desc' | trans }}
+        {% endif %}
+        <a class="button btn btn-primary" style="margin-top: 24px"
+           href="{{ path('join_room') }}">{{ 'new_game.join_a_room'|trans }}</a>
+
+        <a style="margin-top: 24px"
+           href="{{ path('app_new_game',{'_locale' : 'fa'}) }}">{{ 'new_game.fa'|trans }}</a>
+
+        <a style="margin-top: 8px"
+           href="{{ path('app_new_game',{'_locale' : 'en'}) }}">{{ 'new_game.en'|trans }}</a>
+
+    </div>
+    </body>
+{% endblock %}
+
+

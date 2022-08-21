@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% block stylesheets %}
+        {{ parent() }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-lg">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>{{ 'rooms_list.room_name' | trans }}</th>
+                <th>{{ 'rooms_list.capacity/members' | trans }}</th>
+            </tr>
+
+            {% for room in rooms %}
+                <tr>
+                    <th>{{ room.name }}</th>
+                    <th>
+                        <h5>{{ room.getCurrCapacity }}</h5>
+                    </th>
+                    <th>
+                        <a class="button btn btn-primary" {% if user_role != 'ROLE_ADMIN' and user_role != 'ROLE_HOST' %} disabled="disabled" {% endif %}
+                           href="{{ path('app_room_new' , { 'id' : room.id }) }}"
+                        >{{ 'rooms_list.join' | trans }}</a>
+                    </th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

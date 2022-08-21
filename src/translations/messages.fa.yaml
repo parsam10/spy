@@ -1,0 +1,29 @@
+login:
+  email: ایمیل
+  password: گذرواژه
+  login: وارد شدن
+  sign_in: ورود
+  not_registered_yet?: هنوز ثبت نام نکردید؟
+register:
+  registration: ثبت نام
+  register: ثبت نام
+new_game:
+  welcome: username خوش آمدید
+  welcome_desc: امیدوارم بتونی جاسوس رو پیدا کنی
+  create_new_room: ساخت روم جدید
+  join_a_room: وارد شدن به روم
+  desc: فقط مدیر و میزبان اجازه دارند روم جدید بسازند
+  fa: فارسی
+  en: انگلیسی
+room_new:
+  room_invitation_code: 'کد دعوت به تیم: inv_code'
+  start: شروع
+  remove: حذف روم
+members_list:
+  title: اعضا
+rooms_list:
+  room_name: اسم روم
+  capacity/members: اعضای کنونی/ظرفیت
+  join: ورود
+room:
+  end_the_game: پایان بازی

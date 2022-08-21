@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% block stylesheets %}
+        {{ parent() }}
+        {#        {{ encore_entry_link_tags('new_game') }} #}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ parent() }}
+        {{ encore_entry_script_tags('new_game') }}
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-md">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>{{ 'members_list.title'|trans }}</th>
+            </tr>
+
+            {% for member in members %}
+                <tr>
+                    <th>{{ member.email }}</th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

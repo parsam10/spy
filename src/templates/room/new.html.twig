@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% block stylesheets %}
+        {{ parent() }}
+        {{ encore_entry_link_tags('new_game') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ parent() }}
+        {{ encore_entry_script_tags('new_game') }}
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <h3>{{ 'room_new.room_invitation_code'|trans({"inv_code" : room.invitationCode}) }}</h3>
+
+    {{ include('room/members_list.html.twig' ,{'members': members}) }}
+
+    <a class="button btn btn-primary"
+            {% if user_is_lobby_creator == false %} style="pointer-events: none; background-color: #cccccc" {% endif %}
+       href="{{ path('app_room',{'id': room.id}) }}"
+    >{{ 'room_new.start'|trans }}</a>
+
+    <a class="button btn btn-primary"
+            {% if user_is_lobby_creator == false %} style="pointer-events: none; background-color: #cccccc" {% endif %}
+       href="{{ path('room_remove',{'id': room.id}) }}"
+    >{{ 'room_new.remove'|trans }}</a>
+
+{% endblock %}

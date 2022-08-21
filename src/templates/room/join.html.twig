@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% block stylesheets %}
+        {{ parent() }}
+        {#        {{ encore_entry_link_tags('new_game') }} #}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ parent() }}
+        {#        {{ encore_entry_script_tags('new_game') }} #}
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="btn-group-vertical" style="align-items: center">
+        {{ form(form) }}
+        {{ include('room/rooms_list.html.twig' ,{'rooms': rooms , 'user_role' : user_role}) }}
+    </div>
+
+{% endblock %}

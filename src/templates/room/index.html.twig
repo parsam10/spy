@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% block stylesheets %}
+        {{ parent() }}
+        {{ encore_entry_link_tags('new_game') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ parent() }}
+        {{ encore_entry_script_tags('new_game') }}
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <h3>{{ room.getTargetWord }}</h3>
+    <h1>{{ room.getSpyMemberId }}</h1>
+
+    <a style="margin-top: 100px"
+       class="btn btn-primary"
+       href="{{ path('app_room_new',{'id' : room.id}) }}">{{ 'room.end_the_game'|trans }}</a>
+
+{% endblock %}
